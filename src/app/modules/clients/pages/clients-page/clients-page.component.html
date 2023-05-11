@@ -1,0 +1,38 @@
+<div class="header">
+  <h1>Clients</h1>
+</div>
+
+<div class="page-content">
+  <div class="general-actions">
+    <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input type="text" pInputText [formControl]="search" />
+    </span>
+    <p-button label="Add client" icon="pi pi-plus"></p-button>
+  </div>
+
+  <p-table
+    *ngIf="clients$ | async as clients"
+    [value]="clients | filter : search.value || ''"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Contact Name</th>
+        <th>Contact Email</th>
+        <th>Since</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-client>
+      <tr>
+        <td>{{ client.id }}</td>
+        <td>{{ client.name }}</td>
+        <td>{{ client.contactName }}</td>
+        <td>{{ client.contactEmail }}</td>
+        <td>{{ client.createdAt }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
