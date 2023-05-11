@@ -1,0 +1,38 @@
+.sidebar-container {
+  width: 250px;
+  padding: 0 0px;
+  border-right: 1px solid var(--surface-300);
+  height: 100%;
+}
+
+.header {
+  height: 60px;
+  border-bottom: 1px solid var(--surface-300);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  padding: 1rem;
+}
+
+.links a {
+  padding: 0.8rem 0.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+.links a:hover {
+  background-color: var(--cyan-50);
+}
+
+.links a.active {
+  background-color: var(--cyan-100);
+}
