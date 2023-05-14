@@ -1,14 +1,16 @@
-<div class="header">
-  <h1>Clients</h1>
+<div
+  class="h-[60px] w-full border-b border-gray-300 border-solid border-t-0 border-x-0 p-4 flex items-center fixed"
+>
+  <h1 class="text-3xl">Clients</h1>
 </div>
 
-<div class="page-content">
-  <div class="general-actions">
+<div class="p-4 mt-[60px]">
+  <div class="flex justify-between mb-4">
     <span class="p-input-icon-left">
       <i class="pi pi-search"></i>
-      <input type="text" pInputText [formControl]="search" />
+      <input type="text" class="text-input" [formControl]="search" />
     </span>
-    <p-button label="Add client" icon="pi pi-plus"></p-button>
+    <button class="btn" (click)="showAddClientModal()">Add client</button>
   </div>
 
   <p-table
