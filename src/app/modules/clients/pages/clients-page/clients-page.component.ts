@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ClientService } from '../../services/client.service';
 import { FormControl } from '@angular/forms';
+import { Client } from '../../interfaces/client';
 
 @Component({
   selector: 'app-index',
@@ -10,6 +11,15 @@ import { FormControl } from '@angular/forms';
 export class ClientsPageComponent {
   clients$ = this.clientService.getClients();
   search = new FormControl('');
+  addClientModalVisible = false;
 
   constructor(private clientService: ClientService) {}
+
+  showAddClientModal() {
+    this.addClientModalVisible = true;
+  }
+
+  handleCreateClient(client: Client) {
+    console.log('Form to Page', client);
+  }
 }
