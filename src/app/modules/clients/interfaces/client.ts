@@ -1,7 +1,7 @@
 export interface Client {
-  id: string;
-  name: string;
+  id?: string;
+  company: string;
   contactName: string;
   contactEmail: string;
-  createdAt: string;
+  createdAt?: string;
 }
