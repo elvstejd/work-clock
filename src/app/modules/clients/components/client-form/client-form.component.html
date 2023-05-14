@@ -1,0 +1,57 @@
+<form [formGroup]="clientForm" (submit)="handleSubmit()" class="flex flex-col">
+  <div class="mb-4">
+    <label class="input-label" for="company"> Name </label>
+    <input
+      type="text"
+      class="text-input"
+      id="company"
+      formControlName="company"
+      [ngClass]="{ 'invalid-input': showInvalidClass('company') }"
+    />
+    <div class="error-message" *ngIf="showError('company', 'required')">
+      This field is required
+    </div>
+  </div>
+  <div class="mb-4">
+    <label class="input-label" for="contact-name"> Contact name </label>
+    <input
+      type="text"
+      class="text-input"
+      id="contact-name"
+      pInputText
+      formControlName="contactName"
+      [ngClass]="{ 'invalid-input': showInvalidClass('contactName') }"
+    />
+    <div class="helper-text">Enter the name of the person in charge</div>
+    <div class="error-message" *ngIf="showError('contactName', 'required')">
+      This field is required
+    </div>
+  </div>
+  <div class="mb-4">
+    <label class="input-label" for="contact-email"> Contact email </label>
+    <input
+      type="text"
+      class="text-input"
+      id="contact-email"
+      pInputText
+      formControlName="contactEmail"
+      [ngClass]="{ 'invalid-input': showInvalidClass('contactEmail') }"
+    />
+    <div class="helper-text">Enter the email of the person in charge</div>
+    <div class="error-message" *ngIf="showError('contactEmail', 'required')">
+      This field is required
+    </div>
+    <div
+      class="error-message"
+      *ngIf="
+        clientForm.get('contactEmail')?.hasError('email') &&
+        clientForm.get('contactEmail')?.touched
+      "
+    >
+      Make sure the email is valid
+    </div>
+  </div>
+  <div class="flex flex-row-reverse">
+    <button class="btn" type="submit">Add</button>
+  </div>
+</form>
