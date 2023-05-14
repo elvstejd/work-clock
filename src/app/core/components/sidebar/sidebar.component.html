@@ -1,19 +1,19 @@
-<div class="sidebar-container">
-  <div class="header">
-    <p>Work Clock</p>
+<div class="w-[250px] border-r h-full">
+  <div class="h-14 border-b p-4 flex items-center">
+    <p class="text-sm font-semibold">Work Clock</p>
   </div>
   <nav>
-    <ul class="links">
-      <li>
+    <ul class="list-none p-4 flex flex-col gap-1">
+      <li *ngFor="let link of links" class="block">
         <a
-          routerLink="/"
-          routerLinkActive="active"
+          class="h-9 text-sm hover:bg-gray-100 px-2 flex rounded-md items-center"
+          [routerLink]="link.path"
+          routerLinkActive="bg-gray-100"
           [routerLinkActiveOptions]="{ exact: true }"
-          >Time Tracker</a
         >
+          {{ link.label }}
+        </a>
       </li>
-      <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
-      <li><a routerLink="/clients" routerLinkActive="active">Clients</a></li>
     </ul>
   </nav>
 </div>
