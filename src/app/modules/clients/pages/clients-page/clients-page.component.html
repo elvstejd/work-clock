@@ -20,7 +20,7 @@
 
   <p-table
     *ngIf="clients$ | async as clients"
-    [value]="clients | filter : search.value || ''"
+    [value]="clients | filter : 'company' : search.value || ''"
     [tableStyle]="{ 'min-width': '50rem' }"
   >
     <ng-template pTemplate="header">
