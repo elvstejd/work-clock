@@ -6,10 +6,15 @@
 
 <div class="p-4 mt-[60px]">
   <div class="flex justify-between mb-4">
-    <span class="p-input-icon-left">
-      <i class="pi pi-search"></i>
-      <input type="text" class="text-input" [formControl]="search" />
-    </span>
+    <div class="max-w-4xl">
+      <input
+        placeholder="Search by company"
+        type="text"
+        class="text-input"
+        [formControl]="search"
+      />
+    </div>
+
     <button class="btn" (click)="showAddClientModal()">Add client</button>
   </div>
 
