@@ -1,6 +1,17 @@
-<div class="container">
-  <app-sidebar></app-sidebar>
-  <div class="main-content">
+<div class="flex lg:flex-row flex-col h-full">
+  <div
+    class="w-64 border-r h-screen flex-shrink-0 fixed inset-y-0 left-0 z-10 overflow-auto lg:translate-x-0 transition-transform bg-white pt-14 lg:pt-0"
+    [ngClass]="{ '-translate-x-full': !showSidebar }"
+  >
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="flex-grow ml-0 lg:ml-64">
     <router-outlet></router-outlet>
   </div>
 </div>
+<button
+  (click)="showSidebar = !showSidebar"
+  class="fixed z-50 top-[9px] left-4 mr-2 btn-secondary lg:hidden"
+>
+  Menu
+</button>
