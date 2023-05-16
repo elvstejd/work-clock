@@ -1,27 +1,28 @@
-# WorkClock
+# Work Clock
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+Work Clock is a web application built with Angular that allows freelancers to track the hours they spend on client projects, calculate their earnings and other related metrics.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Task Tracking**: Users can create, update, and delete tasks and assign them to specific projects and clients.
+- **Time Tracking**: The application enables users to start and stop timers to track the time spent on individual tasks.
+- **Project and Client Management**: Users can manage projects and clients, including creating, updating, and deleting them.
+- **Hourly Rate Calculation**: The application automatically calculates hourly rates based on the time spent on tasks and the user's predefined rates.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone the repository: `git clone <repo.git>`
+2. Navigate to the project directory: `cd repo`
+3. Install the dependencies: `npm install`
 
-## Build
+## Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Run the application: `ng serve`
+2. Open your browser and visit http://localhost:4200 to access the application.
 
-## Running unit tests
+## Modules and Libraries
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Reactive Forms
+- NgRx (Redux)
+- PrimeNG (UI Component Library)
+- Tailwind CSS (Utility-First CSS Framework)
