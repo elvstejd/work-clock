@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Client } from '../../interfaces/client';
 import { Store } from '@ngrx/store';
 import { addClient, loadClients } from '../../store/client.actions';
 import { selectAllClients } from '../../store/client.selectors';
 import { IdGeneratorService } from 'src/app/shared/services/id-generator.service';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-index',
@@ -16,8 +17,20 @@ export class ClientsPageComponent {
   search = new FormControl('');
   addClientModalVisible = false;
 
+  @ViewChild('clientsTable') clientsTable?: Table;
+  @ViewChild('searchInput') searchInput?: HTMLElement;
+
   constructor(private store: Store, private idGenenerator: IdGeneratorService) {
     this.store.dispatch(loadClients());
+  }
+
+  handleSearchInput() {
+    this.clientsTable?.filterGlobal(this.search.value, 'contains');
+  }
+
+  clearTableFilters() {
+    this.clientsTable?.clear();
+    this.search.reset();
   }
 
   showAddClientModal() {

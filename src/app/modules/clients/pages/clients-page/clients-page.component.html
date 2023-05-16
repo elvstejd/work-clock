@@ -1,27 +1,39 @@
 <div
-  class="h-14 w-full border-b border-solid border-t-0 border-x-0 p-4 flex items-center fixed pl-24 lg:pl-4"
+  class="h-14 w-full border-b border-solid border-t-0 border-x-0 p-4 flex items-center fixed pl-24 lg:pl-4 bg-white z-50"
 >
   <h1 class="text-sm font-semibold">Clients</h1>
 </div>
 
 <div class="p-4 mt-[60px]">
   <div class="flex justify-between mb-4">
-    <div class="max-w-4xl">
+    <div class="w-full flex gap-2">
       <input
-        placeholder="Search by company"
-        type="text"
-        class="text-input"
         [formControl]="search"
+        placeholder="Search by company, contact name..."
+        type="text"
+        class="text-input max-w-xs"
+        (input)="handleSearchInput()"
       />
+      <button class="btn-secondary" (click)="clearTableFilters()">
+        Clear filters
+      </button>
     </div>
 
     <button class="btn" (click)="showAddClientModal()">Add client</button>
   </div>
 
   <p-table
+    #clientsTable
     *ngIf="clients$ | async as clients"
-    [value]="clients | filter : 'company' : search.value || ''"
+    [value]="clients"
     [tableStyle]="{ 'min-width': '50rem' }"
+    dataKey="id"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[5, 10, 25, 50]"
+    [globalFilterFields]="['company', 'contactName']"
   >
     <ng-template pTemplate="header">
       <tr>

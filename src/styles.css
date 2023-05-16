@@ -37,16 +37,16 @@ body {
 }
 
 .btn {
-  @apply text-sm bg-blue-600 hover:bg-blue-700 text-white font-medium h-9 px-3 rounded-md transition-colors active:bg-blue-800;
+  @apply whitespace-nowrap text-sm bg-blue-600 hover:bg-blue-700 text-white font-medium h-9 px-3 rounded-md transition-colors active:bg-blue-800;
 }
 
 .btn-secondary {
-  @apply text-sm bg-gray-100 hover:bg-gray-200 text-black font-medium h-9 px-3 rounded-md transition-colors active:bg-gray-300;
+  @apply whitespace-nowrap  text-sm bg-gray-100 hover:bg-gray-200 text-black font-medium h-9 px-3 rounded-md transition-colors active:bg-gray-300;
 }
 
 /* Make tables look nicer */
 .p-datatable {
-  @apply text-sm rounded-md overflow-hidden shadow-sm border;
+  @apply text-sm rounded-md shadow-sm border;
 }
 
 .p-datatable-thead th {
@@ -56,9 +56,55 @@ body {
   font-weight: 600 !important;
   border: 1px solid #e5e7eb !important;
   border-width: 0 0 1px 0 !important;
+  border-radius: 6px !important;
 }
 
 .p-datatable .p-datatable-tbody > tr > td {
   border: 1px solid #e5e7eb !important;
   border-width: 0 0 1px 0 !important;
+}
+
+.p-paginator {
+  font-size: 13px;
+  border-radius: 6px !important;
+}
+
+.p-paginator .p-paginator-element {
+  min-width: auto !important;
+  height: 36px !important;
+  aspect-ratio: 1;
+  border-radius: 6px !important;
+  font-size: 13px;
+  border: none !important;
+}
+
+.p-paginator .p-highlight {
+  background-color: theme(colors[blue].100) !important;
+  color: theme(colors[blue].800) !important;
+}
+
+.p-paginator .p-link {
+  box-shadow: none;
+}
+
+.p-dropdown {
+  font-size: 13px !important;
+  height: 36px !important;
+  display: flex;
+  align-items: center;
+}
+
+.p-dropdown .p-dropdown-items {
+  font-size: 13px !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+}
+
+.p-dropdown span.p-inputtext {
+  font-size: 13px !important;
+  padding-left: 1rem !important;
+}
+
+.p-dropdown .p-icon-wrapper svg {
+  width: 13px;
 }
