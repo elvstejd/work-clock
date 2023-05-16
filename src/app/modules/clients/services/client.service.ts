@@ -4,14 +4,14 @@ import { Client } from '../interfaces/client';
 
 const clients: Client[] = [
   {
-    id: '1',
+    id: 'CLAsdRc',
     company: 'Deloitte',
     contactName: 'Mark Andressen',
     contactEmail: 'm.andressen@deloitte.com',
     createdAt: '2023-05-16T19:41:22.033Z',
   },
   {
-    id: '2',
+    id: 'CLLkG5F',
     company: 'Ernst & Young',
     contactName: 'Joshua Carlston',
     contactEmail: 'jcarl@ey.com',
@@ -23,7 +23,7 @@ const clients: Client[] = [
   providedIn: 'root',
 })
 export class ClientService {
-  private clients: Observable<Client[]> = of(clients).pipe(delay(2000));
+  private clients: Observable<Client[]> = of(clients);
 
   getClients() {
     return this.clients;
