@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { of, Observable, delay } from 'rxjs';
 import { Client } from '../interfaces/client';
 
 const clients: Client[] = [
@@ -23,9 +23,9 @@ const clients: Client[] = [
   providedIn: 'root',
 })
 export class ClientService {
-  private clients$: Observable<Client[]> = of(clients);
+  private clients: Observable<Client[]> = of(clients).pipe(delay(2000));
 
   getClients() {
-    return this.clients$;
+    return this.clients;
   }
 }

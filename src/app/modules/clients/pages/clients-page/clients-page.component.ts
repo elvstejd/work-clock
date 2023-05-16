@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { ClientService } from '../../services/client.service';
 import { FormControl } from '@angular/forms';
 import { Client } from '../../interfaces/client';
+import { Store } from '@ngrx/store';
+import { loadClients } from '../../store/client.actions';
+import { selectAllClients } from '../../store/client.selectors';
 
 @Component({
   selector: 'app-index',
@@ -9,11 +11,13 @@ import { Client } from '../../interfaces/client';
   styleUrls: ['./clients-page.component.css'],
 })
 export class ClientsPageComponent {
-  clients$ = this.clientService.getClients();
+  clients$ = this.store.select(selectAllClients);
   search = new FormControl('');
   addClientModalVisible = false;
 
-  constructor(private clientService: ClientService) {}
+  constructor(private store: Store) {
+    this.store.dispatch(loadClients());
+  }
 
   showAddClientModal() {
     this.addClientModalVisible = true;
