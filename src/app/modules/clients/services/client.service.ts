@@ -8,14 +8,14 @@ const clients: Client[] = [
     company: 'Deloitte',
     contactName: 'Mark Andressen',
     contactEmail: 'm.andressen@deloitte.com',
-    createdAt: 'Today',
+    createdAt: '2023-05-16T19:41:22.033Z',
   },
   {
     id: '2',
     company: 'Ernst & Young',
     contactName: 'Joshua Carlston',
     contactEmail: 'jcarl@ey.com',
-    createdAt: 'Yesterday',
+    createdAt: '2023-04-16T15:30:22.033Z',
   },
 ];
 

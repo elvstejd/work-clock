@@ -27,7 +27,11 @@ export class ClientsPageComponent {
   handleCreateClient(client: Client) {
     this.store.dispatch(
       addClient({
-        client: { ...client, id: this.idGenenerator.generate('CL') },
+        client: {
+          ...client,
+          id: this.idGenenerator.generate('CL'),
+          createdAt: new Date().toISOString(),
+        },
       })
     );
     this.addClientModalVisible = false;
