@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Client } from '../../interfaces/client';
 import { Store } from '@ngrx/store';
-import { loadClients } from '../../store/client.actions';
+import { addClient, loadClients } from '../../store/client.actions';
 import { selectAllClients } from '../../store/client.selectors';
+import { IdGeneratorService } from 'src/app/shared/services/id-generator.service';
 
 @Component({
   selector: 'app-index',
@@ -15,7 +16,7 @@ export class ClientsPageComponent {
   search = new FormControl('');
   addClientModalVisible = false;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private idGenenerator: IdGeneratorService) {
     this.store.dispatch(loadClients());
   }
 
@@ -24,6 +25,11 @@ export class ClientsPageComponent {
   }
 
   handleCreateClient(client: Client) {
-    console.log('Form to Page', client);
+    this.store.dispatch(
+      addClient({
+        client: { ...client, id: this.idGenenerator.generate('CL') },
+      })
+    );
+    this.addClientModalVisible = false;
   }
 }
