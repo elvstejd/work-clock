@@ -6,7 +6,7 @@ import {
   loadClientsFailure,
   loadClientsSuccess,
 } from './client.actions';
-import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 
 @Injectable()
 export class ClientEffects {
@@ -20,7 +20,6 @@ export class ClientEffects {
       ofType(loadClients),
       switchMap(() =>
         this.clientService.getClients().pipe(
-          tap((clients) => console.log(clients)),
           map((clients) => loadClientsSuccess({ clients })),
           catchError((error) => of(loadClientsFailure({ error })))
         )
