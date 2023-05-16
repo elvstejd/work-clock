@@ -25,7 +25,7 @@
   >
     <ng-template pTemplate="header">
       <tr>
-        <th>Id</th>
+        <th>ID</th>
         <th>Company</th>
         <th>Contact Name</th>
         <th>Contact Email</th>
@@ -34,7 +34,11 @@
     </ng-template>
     <ng-template pTemplate="body" let-client>
       <tr>
-        <td>{{ client.id }}</td>
+        <td>
+          <span class="font-mono font-bold text-sm bg-gray-100 p-1 rounded-md">
+            {{ client.id }}
+          </span>
+        </td>
         <td>{{ client.company }}</td>
         <td>{{ client.contactName }}</td>
         <td>{{ client.contactEmail }}</td>
