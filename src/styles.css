@@ -49,6 +49,10 @@ body {
   @apply text-sm rounded-md shadow-sm border;
 }
 
+.p-datatable table {
+  border-collapse: separate !important;
+}
+
 .p-datatable-thead th {
   background: white !important;
   color: var(--bluegray-800) !important;
@@ -56,12 +60,27 @@ body {
   font-weight: 600 !important;
   border: 1px solid #e5e7eb !important;
   border-width: 0 0 1px 0 !important;
-  border-radius: 6px !important;
 }
 
-.p-datatable .p-datatable-tbody > tr > td {
+.p-datatable-thead tr th:first-child {
+  border-top-left-radius: 6px !important;
+}
+
+.p-datatable-thead tr th:last-child {
+  border-top-right-radius: 6px !important;
+}
+
+.p-datatable .p-datatable-tbody tr td {
   border: 1px solid #e5e7eb !important;
   border-width: 0 0 1px 0 !important;
+}
+
+.p-datatable .p-datatable-tbody tr:last-child {
+  background: transparent !important;
+}
+
+.p-datatable .p-datatable-tbody tr:last-child td {
+  border: none !important;
 }
 
 .p-paginator {
