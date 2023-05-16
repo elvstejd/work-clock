@@ -86,6 +86,7 @@ body {
 .p-paginator {
   font-size: 13px;
   border-radius: 6px !important;
+  border-top: 1px solid #e5e7eb !important;
 }
 
 .p-paginator .p-paginator-element {
