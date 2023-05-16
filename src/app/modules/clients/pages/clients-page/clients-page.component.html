@@ -28,7 +28,7 @@
     [value]="clients"
     [tableStyle]="{ 'min-width': '50rem' }"
     dataKey="id"
-    [paginator]="true"
+    [paginator]="clients.length > 5"
     [rows]="5"
     [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
