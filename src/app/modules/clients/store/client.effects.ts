@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ClientService } from '../services/client.service';
 import {
+  addClient,
   loadClients,
   loadClientsFailure,
   loadClientsSuccess,
 } from './client.actions';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, from, map, of, switchMap } from 'rxjs';
 
 @Injectable()
 export class ClientEffects {
@@ -25,5 +26,14 @@ export class ClientEffects {
         )
       )
     )
+  );
+
+  persistNewClient$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(addClient),
+        switchMap(({ client }) => from(this.clientService.saveClient(client)))
+      ),
+    { dispatch: false }
   );
 }
