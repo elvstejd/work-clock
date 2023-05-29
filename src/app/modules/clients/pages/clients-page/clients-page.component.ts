@@ -3,8 +3,11 @@ import { FormControl } from '@angular/forms';
 import { Client } from '../../interfaces/client';
 import { Store } from '@ngrx/store';
 import { loadClients, removeClient } from '../../store/client.actions';
-import { selectAllClients } from '../../store/client.selectors';
-import { IdGeneratorService } from 'src/app/shared/services/id-generator.service';
+import {
+  selectAllClients,
+  selectClientListErrorMessage,
+  selectClientListStatus,
+} from '../../store/client.selectors';
 import { Table } from 'primeng/table';
 import { DialogService } from 'primeng/dynamicdialog';
 import { ClientFormComponent } from '../../components/client-form/client-form.component';
@@ -18,6 +21,8 @@ import { ConfirmFrameComponent } from 'src/app/shared/components/confirm-frame/c
 })
 export class ClientsPageComponent {
   clients$ = this.store.select(selectAllClients);
+  clientListStatus$ = this.store.select(selectClientListStatus);
+  clientListErrorMessage$ = this.store.select(selectClientListErrorMessage);
 
   search = new FormControl('');
 

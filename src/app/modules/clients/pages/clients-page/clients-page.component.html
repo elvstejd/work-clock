@@ -21,56 +21,84 @@
 
     <button class="btn" (click)="showAddClientModal()">Add client</button>
   </div>
-
-  <p-table
-    #clientsTable
-    *ngIf="clients$ | async as clients"
-    [value]="clients"
-    [tableStyle]="{ 'min-width': '50rem' }"
-    dataKey="id"
-    [paginator]="clients.length > 5"
-    [rows]="5"
-    [showCurrentPageReport]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[5, 10, 25, 50]"
-    [globalFilterFields]="['company', 'contactName']"
-  >
-    <ng-template pTemplate="header">
-      <tr>
-        <th>ID</th>
-        <th>Company</th>
-        <th>Contact Name</th>
-        <th>Contact Email</th>
-        <th>Since</th>
-        <th></th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-client>
-      <tr>
-        <td>
-          <span class="font-mono font-bold text-sm bg-gray-100 p-1 rounded-md">
-            {{ client.id }}
-          </span>
-        </td>
-        <td>{{ client.company }}</td>
-        <td>{{ client.contactName }}</td>
-        <td>{{ client.contactEmail }}</td>
-        <td>{{ client.createdAt | date : "MMMM yyyy" }}</td>
-        <td>
-          <div class="flex gap-2">
-            <button class="btn-secondary" (click)="showEditClientModal(client)">
-              <i class="pi pi-pencil text-sm"></i>
-              Edit
-            </button>
-            <button
-              class="btn-secondary"
-              (click)="showDeleteClientConfirm(client)"
+  <ng-container *ngIf="clients$ | async as clients">
+    <p-table
+      #clientsTable
+      [value]="clients"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      dataKey="id"
+      [paginator]="clients.length > 5"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 10, 25, 50]"
+      [globalFilterFields]="['company', 'contactName']"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>ID</th>
+          <th>Company</th>
+          <th>Contact Name</th>
+          <th>Contact Email</th>
+          <th>Since</th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-client>
+        <tr>
+          <td>
+            <span
+              class="font-mono font-bold text-sm bg-gray-100 p-1 rounded-md"
             >
-              <i class="pi pi-trash text-sm"></i>
-            </button>
-          </div>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+              {{ client.id }}
+            </span>
+          </td>
+          <td>{{ client.company }}</td>
+          <td>{{ client.contactName }}</td>
+          <td>{{ client.contactEmail }}</td>
+          <td>{{ client.createdAt | date : "MMMM yyyy" }}</td>
+          <td>
+            <div class="flex gap-2">
+              <button
+                class="btn-secondary"
+                (click)="showEditClientModal(client)"
+              >
+                <i class="pi pi-pencil text-sm"></i>
+                Edit
+              </button>
+              <button
+                class="btn-secondary"
+                (click)="showDeleteClientConfirm(client)"
+              >
+                <i class="pi pi-trash text-sm"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <ng-container *ngIf="clientListStatus$ | async as clientListStatus">
+      <div
+        *ngIf="clients.length === 0 && clientListStatus === 'success'"
+        class="flex justify-center my-8 text-gray-400"
+      >
+        <p>No clients added yet. Start by adding some.</p>
+      </div>
+      <div
+        *ngIf="clientListStatus === 'loading'"
+        class="flex justify-center my-8 text-gray-400"
+      >
+        <p>Loading clients...</p>
+      </div>
+      <div
+        *ngIf="clientListStatus === 'error'"
+        class="flex justify-center my-8 text-gray-400"
+      >
+        <p>Error happened while loading clients:</p>
+        <p *ngIf="clientListErrorMessage$ | async as clientListErrorMessage">
+          {{ clientListErrorMessage }}
+        </p>
+      </div>
+    </ng-container>
+  </ng-container>
 </div>
