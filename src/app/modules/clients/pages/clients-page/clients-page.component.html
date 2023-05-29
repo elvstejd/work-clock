@@ -62,7 +62,10 @@
               <i class="pi pi-pencil text-sm"></i>
               Edit
             </button>
-            <button class="btn-secondary">
+            <button
+              class="btn-secondary"
+              (click)="showDeleteClientConfirm(client)"
+            >
               <i class="pi pi-trash text-sm"></i>
             </button>
           </div>

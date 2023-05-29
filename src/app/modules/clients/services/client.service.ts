@@ -34,4 +34,12 @@ export class ClientService {
       })
     );
   }
+
+  async removeClient(id: string) {
+    const clients = await lastValueFrom(this.getClients());
+    this.storage.saveData(
+      'clients',
+      clients.filter((client) => client.id !== id)
+    );
+  }
 }
