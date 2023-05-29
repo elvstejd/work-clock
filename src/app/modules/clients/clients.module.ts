@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ClientsRoutingModule } from './clients-routing.module';
 import { ClientsPageComponent } from './pages/clients-page/clients-page.component';
 import { TableModule } from 'primeng/table';
@@ -21,6 +22,7 @@ import { ClientEffects } from './store/client.effects';
     SharedModule,
     ReactiveFormsModule,
     DialogModule,
+    DynamicDialogModule,
     StoreModule.forFeature('clients', clientReducer),
     EffectsModule.forFeature([ClientEffects]),
   ],

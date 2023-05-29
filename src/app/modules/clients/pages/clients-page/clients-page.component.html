@@ -42,6 +42,7 @@
         <th>Contact Name</th>
         <th>Contact Email</th>
         <th>Since</th>
+        <th></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-client>
@@ -55,20 +56,18 @@
         <td>{{ client.contactName }}</td>
         <td>{{ client.contactEmail }}</td>
         <td>{{ client.createdAt | date : "MMMM yyyy" }}</td>
+        <td>
+          <div class="flex gap-2">
+            <button class="btn-secondary" (click)="showEditClientModal(client)">
+              <i class="pi pi-pencil text-sm"></i>
+              Edit
+            </button>
+            <button class="btn-secondary">
+              <i class="pi pi-trash text-sm"></i>
+            </button>
+          </div>
+        </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
-<p-dialog
-  header="Add client"
-  [(visible)]="addClientModalVisible"
-  [style]="{ width: '400px' }"
-  [modal]="true"
-  [draggable]="false"
-  [resizable]="false"
->
-  <app-client-form
-    *ngIf="addClientModalVisible"
-    (onSubmit)="handleCreateClient($event)"
-  ></app-client-form>
-</p-dialog>

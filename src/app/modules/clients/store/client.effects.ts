@@ -6,6 +6,7 @@ import {
   loadClients,
   loadClientsFailure,
   loadClientsSuccess,
+  updateClient,
 } from './client.actions';
 import { catchError, from, map, of, switchMap } from 'rxjs';
 
@@ -33,6 +34,15 @@ export class ClientEffects {
       this.actions$.pipe(
         ofType(addClient),
         switchMap(({ client }) => from(this.clientService.saveClient(client)))
+      ),
+    { dispatch: false }
+  );
+
+  persistUpdateClient$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(updateClient),
+        switchMap(({ client }) => from(this.clientService.updateClient(client)))
       ),
     { dispatch: false }
   );

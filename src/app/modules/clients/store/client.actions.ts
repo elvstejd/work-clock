@@ -6,6 +6,11 @@ export const addClient = createAction(
   props<{ client: Client }>()
 );
 
+export const updateClient = createAction(
+  '[Clients] Update Client',
+  props<{ client: Client }>()
+);
+
 export const removeClient = createAction(
   '[Clients] Remove Client',
   props<{ id: string }>()

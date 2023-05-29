@@ -6,6 +6,7 @@ import {
   loadClientsFailure,
   loadClientsSuccess,
   removeClient,
+  updateClient,
 } from './client.actions';
 
 export interface ClientState {
@@ -25,6 +26,15 @@ export const clientReducer = createReducer(
   on(addClient, (state, { client }) => ({
     ...state,
     clients: [...state.clients, client],
+  })),
+  on(updateClient, (state, { client: updatedClient }) => ({
+    ...state,
+    clients: state.clients.map((client) => {
+      if (client.id === updatedClient.id) {
+        return updatedClient;
+      }
+      return client;
+    }),
   })),
   on(removeClient, (state, { id }) => ({
     ...state,

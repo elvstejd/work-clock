@@ -23,4 +23,15 @@ export class ClientService {
     const clients = await lastValueFrom(this.getClients());
     this.storage.saveData('clients', [...clients, client]);
   }
+
+  async updateClient(updatedClient: Client) {
+    const clients = await lastValueFrom(this.getClients());
+    this.storage.saveData(
+      'clients',
+      clients.map((client) => {
+        if (client.id === updatedClient.id) return updatedClient;
+        return client;
+      })
+    );
+  }
 }
